@@ -4,7 +4,7 @@ import pickle
 import joblib as jb
 
 app = Flask(__name__)
-model = jb.load(open('mycovidmodel.pkl', 'rb'))
+model = jb.load('mycovidmodel.pkl')
 @app.route('/')
 def home():
     return render_template('index.html')
