@@ -1,7 +1,7 @@
 import numpy as np
 from flask import Flask,render_template,request
 import pickle
-from sklearn.externals import joblib as jb
+import joblib as jb
 
 app = Flask(__name__)
 model = jb.load(open('mycovidmodel.pkl', 'rb'))
