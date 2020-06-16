@@ -1,10 +1,10 @@
 import numpy as np
 from flask import Flask,render_template,request
-import pickle
-import joblib as jb
+# import pickle
+# import joblib as jb
 
 app = Flask(__name__)
-model = pickle.load(open('mycovidmodel.pkl','rb'))
+# model = pickle.load(open('mycovidmodel.pkl','rb'))
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -48,13 +48,13 @@ def detect():
     lungdiseases=int(x[17])
     kidneydiseases=int(x[18])
     test=np.array([gen,cough,sore,weakness,breathing,sleep,chestpain,travel,diab,heartproblem,lungdiseases,immunity,bp,kidneydiseases,appetide,los,a1,a2,a3,a4,t1,t2])
-    predict=model.predict([[test]])
-    if predict == 0:
-        return render_template('norisk.html')
-    elif predict == 1:
-        return render_template('lowrisk.html')
-    else:
-        return render_template('highrisk.html')
+#     predict=model.predict([[test]])
+#     if predict == 0:
+#         return render_template('norisk.html')
+#     elif predict == 1:
+#         return render_template('lowrisk.html')
+#     else:
+#         return render_template('highrisk.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
